@@ -11,8 +11,8 @@ const RESOURCES = {
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
-"index.html": "4169e7169edaff0241558bd8391eb296",
-"/": "4169e7169edaff0241558bd8391eb296",
+"index.html": "9619232c0268d58162ad0d24c5528ff5",
+"/": "9619232c0268d58162ad0d24c5528ff5",
 "main.dart.js": "be1c58076fbc2df0ee7afaa5058dd8bb",
 "manifest.json": "ca0b0ab58f58582d266e2dd3b52350dc",
 "version.json": "597a7460f4c3043b0bd7f9e36f3836d8"
@@ -33,7 +33,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value, {'cache': 'reload'})));
+        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
     })
   );
 });
